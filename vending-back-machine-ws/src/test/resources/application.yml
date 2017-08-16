@@ -1,0 +1,7 @@
+jdbc:
+  driver.class: org.hsqldb.jdbcDriver
+  url: jdbc:hsqldb:mem:test;sql.syntax_pgs=true
+  username: sa
+  password:
+
+test.reset.sql.template: ALTER TABLE %s ALTER COLUMN id RESTART WITH 1

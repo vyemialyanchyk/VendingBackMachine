@@ -1,0 +1,52 @@
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'maven'
+    apply plugin: 'idea'
+
+    group = 'com.vending.back.machine'
+    version = '1.0.0'
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    buildscript {
+        ext {
+            springBootVersion = '1.5.1.RELEASE'
+        }
+        repositories {
+            maven {
+                url 'https://repo.spring.io/libs-milestone'
+            }
+            mavenLocal()
+            mavenCentral()
+        }
+        dependencies {
+            classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+            classpath("io.spring.gradle:dependency-management-plugin:1.0.1.RELEASE")
+        }
+    }
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven {
+            url "http://devb-php-ci1.cloudapp.net:8080/repository/internal/"
+        }
+        maven {
+            url "https://jitpack.io"
+        }
+    }
+
+    dependencies {
+        compile("org.projectlombok:lombok:1.16.10")
+    }
+
+    jar {
+        manifest {
+            attributes 'Implementation-Title': 'VendingBackMachine', 'Implementation-Version': 1.0, provider: 'gradle'
+        }
+    }
+
+    tasks.withType(JavaCompile) {
+        options.encoding = 'UTF-8'
+    }
+}

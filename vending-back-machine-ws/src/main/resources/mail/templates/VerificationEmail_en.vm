@@ -1,0 +1,10 @@
+<p>
+    Link to verify email:
+</p>
+<p>
+<center>
+    <a href="$viewVerificationEmailLink">
+        <input type="submit" value="Verify Email" style="cursor: pointer;background-color: #fff;border: 1px solid #2ab573;color: #2ab573;text-align: center;border-radius: 3px;box-sizing: border-box;font-size: 16px;padding: 10px 15px;" onMouseOver="this.style.color='#fff';this.style.backgroundColor='#2ab573'" onMouseOut="this.style.color='#2ab573';this.style.backgroundColor='#fff'"/>
+    </a>
+</center>
+</p>

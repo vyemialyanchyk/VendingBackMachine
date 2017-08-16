@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet id="1-1-oauth-client" author="vy">
+        <comment>Initial client creation</comment>
+        <insert tableName="oauth_client_details">
+            <column name="client_id" type="VARCHAR(256)" value="vbm_app"/>
+            <column name="resource_ids" type="VARCHAR(256)" value="vbm_restservice"/>
+            <column name="client_secret" type="VARCHAR(256)" value="$2a$10$OX.gxgwi.ekLtkNuxsxeyu7drify0.BsWUUQl.RepK4YIh4GUyoPS"/>
+            <column name="scope" type="VARCHAR(256)" value="vbm_app"/>
+            <column name="authorized_grant_types" type="VARCHAR(256)" value="password,refresh_token"/>
+            <column name="web_server_redirect_uri" type="VARCHAR(256)"/>
+            <column name="authorities" type="VARCHAR(256)" value="ROLE_CLIENT_APP"/>
+
+            <column name="access_token_validity" type="INTEGER" value="3600"/>
+            <column name="refresh_token_validity" type="INTEGER" value="7200"/>
+            <column name="additional_information" type="VARCHAR(4096)" value="{}"/>
+        </insert>
+        <rollback>
+            <delete tableName="oauth_client_details">
+                <where>client_id = 'vbm_app'</where>
+            </delete>
+        </rollback>
+    </changeSet>
+    <changeSet id="1-2-oauth-client" author="vy">
+        <comment>Manager client creation</comment>
+        <insert tableName="oauth_client_details">
+            <column name="client_id" type="VARCHAR(256)" value="vbm_manage"/>
+            <column name="resource_ids" type="VARCHAR(256)" value="vbm_restservice"/>
+            <column name="client_secret" type="VARCHAR(256)" value="$2a$10$OX.gxgwi.ekLtkNuxsxeyu7drify0.BsWUUQl.RepK4YIh4GUyoPS"/>
+            <column name="scope" type="VARCHAR(256)" value="vbm_manage"/>
+            <column name="authorized_grant_types" type="VARCHAR(256)" value="password,refresh_token"/>
+            <column name="authorities" type="VARCHAR(256)" value="ROLE_CLIENT_APP,ROLE_MANAGE_APP"/>
+
+            <column name="access_token_validity" type="INTEGER" value="3600"/>
+            <column name="refresh_token_validity" type="INTEGER" value="7200"/>
+            <column name="additional_information" type="VARCHAR(4096)" value="{}"/>
+        </insert>
+        <rollback>
+            <delete tableName="oauth_client_details">
+                <where>client_id = 'vbm_manage'</where>
+            </delete>
+        </rollback>
+    </changeSet>
+    <changeSet id="1-3-oauth-client" author="vy">
+        <comment>Manager client revoke CLIENT role</comment>
+        <update tableName="oauth_client_details">
+            <column name="authorities" type="varchar(255)" value="ROLE_MANAGE_APP"/>
+            <where>client_id = 'vbm_manage'</where>
+        </update>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <logger name="com.vending" level="INFO"/>
+    <logger name="com.vending.back.machine.mapper" level="TRACE"/>
+    <logger name="org.apache.http.wire" level="INFO"/>
+    <logger name="org.mybatis" level="INFO"/>
+    <logger name="java.sql" level="INFO"/>
+    <logger name="org.springframework" level="INFO"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <!--Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern-->
+            <Pattern>%msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <appender name="EMAIL" class="ch.qos.logback.classic.net.SMTPAppender">
+        <smtpHost>smtp.gmail.com</smtpHost>
+        <smtpPort>587</smtpPort>
+        <STARTTLS>true</STARTTLS>
+        <username>xxx@gmail.com</username>
+        <password>xxx</password>
+
+        <to>xxx@gmail.com</to>
+        <from>xxx@gmail.com</from>
+        <subject>VendingBackMachine</subject>
+        <layout class="ch.qos.logback.classic.html.HTMLLayout"/>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+    </appender>
+
+    <root level="ERROR">
+        <appender-ref ref="EMAIL" />
+    </root>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>

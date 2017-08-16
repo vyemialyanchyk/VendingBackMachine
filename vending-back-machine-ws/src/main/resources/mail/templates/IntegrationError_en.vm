@@ -1,0 +1,8 @@
+<h1>Integration error occured</h1>
+
+<h2>$message</h2>
+<h3>$time</h3>
+
+<div style="border-left: 4px solid #73AD21 !important; margin: 20px 0; font-family: Consolas,&quot;courier new&quot;; font-size: 12px; line-height: 1.4; width: auto; background-color: #fff; padding: 8px 12px; border-left: 4px solid #009688; word-wrap: break-word;">
+    $stackTrace
+</div>

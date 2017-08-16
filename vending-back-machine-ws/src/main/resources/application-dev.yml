@@ -1,0 +1,8 @@
+vending.back.machine.ui.base.url: https://www.vbm-todo.com:3000
+
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/vbm_db
+    username: root
+    password: root

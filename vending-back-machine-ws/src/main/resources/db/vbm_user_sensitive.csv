@@ -1,0 +1,2 @@
+user_id,password_hash,password_reset_token,verify_email_token,created,updated,updater
+1,$UNDEFINED,NULL,NULL,"2017-03-13 00:49:09","2017-03-13 00:49:09",NULL

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet id="1-1-oauth" author="vy">
+        <createTable tableName="oauth_client_details">
+            <column name="client_id" type="VARCHAR(256)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="resource_ids" type="VARCHAR(256)"/>
+            <column name="client_secret" type="VARCHAR(256)"/>
+            <column name="scope" type="VARCHAR(256)"/>
+            <column name="authorized_grant_types" type="VARCHAR(256)"/>
+            <column name="web_server_redirect_uri" type="VARCHAR(256)"/>
+            <column name="authorities" type="VARCHAR(256)"/>
+
+            <column name="access_token_validity" type="INTEGER"/>
+            <column name="refresh_token_validity" type="INTEGER"/>
+
+            <column name="additional_information" type="VARCHAR(4096)"/>
+            <column name="autoapprove" type="VARCHAR(256)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1-2-oauth" author="vy">
+        <createTable tableName="oauth_client_token">
+            <column name="authentication_id" type="VARCHAR(256)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="token_id" type="VARCHAR(256)"/>
+            <column name="token" type="LONGVARBINARY"/>
+            <column name="user_name" type="VARCHAR(256)"/>
+            <column name="client_id" type="VARCHAR(256)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1-3-oauth" author="vy">
+        <createTable tableName="oauth_access_token">
+            <column name="authentication_id" type="VARCHAR(256)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="token_id" type="VARCHAR(256)"/>
+            <column name="token" type="LONGVARBINARY"/>
+            <column name="user_name" type="VARCHAR(256)"/>
+            <column name="client_id" type="VARCHAR(256)"/>
+            <column name="authentication" type="LONGVARBINARY"/>
+            <column name="refresh_token" type="VARCHAR(256)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1-4-oauth" author="vy">
+        <createTable tableName="oauth_refresh_token">
+            <column name="token_id" type="VARCHAR(256)"/>
+            <column name="token" type="LONGVARBINARY"/>
+            <column name="authentication" type="LONGVARBINARY"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
